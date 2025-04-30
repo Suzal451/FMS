@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendors</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+        .vendor-card { background: white; padding: 20px; margin: 10px 0; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .vendor-card h2 { margin: 0 0 10px 0; }
+        .vendor-card p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>Vendors</h1>
+    {% for vendor in vendors %}
+    <div class="vendor-card">
+        <h2>{{ vendor.name }}</h2>
+        <p><strong>Description:</strong> {{ vendor.description }}</p>
+        <p><strong>Location:</strong> {{ vendor.location }}</p>
+        <p><strong>Email:</strong> {{ vendor.contact_email }}</p>
+        <p><strong>Phone:</strong> {{ vendor.phone }}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>

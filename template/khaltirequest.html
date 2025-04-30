@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block  body %}
+
+<br><br>
+    {% for data in user_id  %}
+{% if request.user.is_authenticated %}
+
+<h1>Dear <a href="/profile">{{data.user}}</a></h1>
+<h1>Your amount is {{data.price}} <br> {{data.product_id  }}</h1>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Place this where you need payment button -->
+    <button id="payment-button">Pay with Khalti</button>
+    <button><a href="/payment"> Go Back to Booking!!</a></button>
+    <button id="payment-button">Pay Physically </button>
+
+    <script>
+        var config = {
+            
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_299759e5c2b84ab5a7c1aa17db1d4b93",
+            "productIdentity": "{{data.product_id}}",
+            "productName": "futsal",
+            "productUrl": "http://localhost:8000",
+            "paymentPreference": [
+                "KHALTI",
+                "EBANKING",
+                "MOBILE_BANKING",
+                "CONNECT_IPS",
+                "SCT",
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                 axios.get("/khaltiVerify/",{
+                        params:{
+                            "token":payload.token,
+                            "amount":payload.amount,
+                            }
+                    }).then(function(resp){
+                        console.log(resp.data)
+                    })
+                    console.log(payload);
+                   },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({amount:{{data.price}}});
+        }
+    </script>
+
+    <!-- Paste this code anywhere in you body tag -->
+    {% else %}
+      <h1>User not is_authenticated</h1>>
+{% endif %}
+{% endfor %}
+
+    {%endblock body%}
+</html>

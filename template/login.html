@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<section id="login">
+  
+  
+<form method="post" action="/login" class="login-form">
+  {% csrf_token %}
+  <h2 id="login-title">login</h2>
+  <br>
+  <div class="form-email">
+  <input type="text" id="form-item-email" name="username" placeholder="Username">
+</div>
+<div class="form-password">
+  <input type="password" id="form-item-pw" name="password" placeholder="Password">
+</div>
+
+
+
+
+
+
+<div class="signin-button">
+  <button type="submit" id="signin-button" class="signin-button" name="button">SIGN IN</button>
+</div>
+<div class="register">
+  <p>Not a member? <a href="/register">Register</a> </p>
+</div>
+</form>
+
+<div>
+  <style>
+    h5{
+      color:red;
+    
+    }
+  </style>
+  {%for message in messages%}
+  {% if message.tags == 'error' %}
+      <p style="color:red;">{{message}}</p>
+     
+  {% elif message.tags == 'info' %}
+  <script>
+    window.onload = function(){
+      alert('{{message}}')
+    }
+  </script>
+  {% endif %}
+  {% endfor %}
+</div>
+
+</section>  
+{% endblock body %}

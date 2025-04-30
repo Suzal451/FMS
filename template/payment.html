@@ -1,0 +1,67 @@
+{%extends "base.html"%}
+{%block body%}
+<style>
+    .for_table{
+        background:none;
+        position: relative;
+        left:30%;
+        width:50%;
+    }
+
+</style>\
+<br><br>
+<div></div>
+<div>
+<form action="/payment">
+
+    
+</form>
+
+    
+</form>
+</div>
+{{booking_data}}
+<div class="for_table">
+ <table border="1" cellspacing="0" cellpadding="5px">
+    <th>Name</th>
+    <th>Price</th>
+    <th>Duration</th>
+    <th>Sub Total</th>
+    <th>Product Tag</th>
+    <th>Cancel Booking</th>
+    {% for data in user_id_data  %}
+{% if request.user.is_authenticated %}
+<tr>
+    <td>{{userID}}</td>
+     <td>1500/hr</td>
+     <td>{{data.booking_duration}} Minutes</td>
+     <td>{{data.price}}</td>
+     <td>{{data.product_id}}</td>
+    <td>&nbsp;&nbsp;
+    <button style="color:white; background:none; border: 0px solid red;">
+        <a href="delete/{{data.product_id}}"> Cancel</a>
+    </button>
+</td>
+</tr>
+
+<td><button ><a href="khaltirequest/{{data.price}}{{data.product_id}}">Pay</a> </button></td>
+
+{% else %}
+      
+<tr>
+    <td> user 1</td>
+     <td>15/hr</td>
+     <td>1hr</td>
+     <td>15</td>
+    <td>&nbsp;&nbsp;
+    <button style="color:white; background:red; border: 1px solid red;">X</button>
+</td>
+</tr>
+{% endif %}
+{% endfor %}
+</tr>
+{{price}}
+</table>
+</div>
+<br><br>
+{%endblock body%}

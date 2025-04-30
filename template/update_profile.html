@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body  %}
+
+<table border="1" cellpadding="5px" cellspacing="0" class="for_update_profile_table">
+    
+    <form action="" method="POST">
+{%csrf_token%}
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;<b>UPDATE YOUR PROFILE</b>
+</td>
+    <tr><td> {{form.as_p }}
+        <br></td></tr>
+ <tr><td><input type="submit" value="update"></td></tr>  
+
+</form>
+</table>
+
+{% endblock body  %}

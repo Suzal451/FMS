@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<div class="profile-table">
+    
+    {% for profile in profile %}
+    
+    
+    <table border="1" cellpadding="5px" cellspacing="0" class="for_profile_table">
+        
+        <tr><td><h3><br><img src="{{profile.profile_pic}}" alt="profile pic"></h3><br></td></tr>
+
+<tr><td>Your Id : {{profile.id_user}} <br> </td></tr>
+<tr><td>User Name : {{profile.user}}</td></tr>
+<tr><td>Bio : {{profile.bio}}</td></tr>
+<tr><td>Location : {{profile.location}}</td></tr>
+<tr><td><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="table_button"><a href="update/{{profile.id_user}}"> Update </a>
+</button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="table_button"><a href="/payment">Bookings</a></button><br><br>
+</td>
+</tr>
+
+{% endfor %}
+</table>
+</div>
+{% endblock body %}

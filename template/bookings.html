@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<style>
+  
+.for_booking_form{
+  height:470px;
+  position:relative;
+  left:40%;
+  top:0;
+  width:45%;
+} 
+.show_bookings{
+  position:absolute;
+  width:21%;
+  height:100%;
+  left:0;
+  top:150px;
+  transform: translate(0%,-6%);
+  margin-top:45px;
+  margin-left:50px; 
+  color: white;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing:3px; 
+} 
+.show_bookings_button{
+  border:0;
+  position:fixed;
+  top:20px;
+  left:0;
+  height:10%;
+  width:100%;
+  color:black;
+  display:inline;
+  text-transform: uppercase;
+  font-size:13px;
+  font-weight:550;
+  line-height: 1.3em;
+  text-align: center;
+  padding:17px;
+  letter-spacing:2px;
+ 
+  
+}
+.show_bookings_button:hover{
+  background:rgb(226, 235, 231);
+}
+
+.for_booking_container{
+  height:470px;
+  position: relative;
+  width:45%;
+  background-color:none;
+  margin:20px; 
+  color: black;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px; 
+}
+.for_booking_date{
+  position: relative;
+  top:0;
+  left:5%;
+}
+.for_booking_date_inner, .for_booking_time_inner{
+  color: black;
+  top:-15px;
+  left:42%;
+  position: relative;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px; 
+}
+.for_booking_time{
+  position: relative;
+  top: 10%;
+  left:5%;
+}
+.for_booking_button{ 
+  color: black;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  top:-13px;
+  left:35%;
+  position: relative; 
+}
+.for_booking_form ,h5{
+  background-color:white;
+  position: relative;
+  top:40px;
+  left:5%;
+  width:50%;
+}
+* {box-sizing: border-box;}
+</style>
+
+<div class="bookings_bg">
+
+
+<div class="show_bookings">
+<table border="0">
+<form action="/showbookings">
+
+  
+<div> 
+  {% for date in today %}
+  
+  {% if date == "1" %}
+  
+  <table border="1" cellspacing="1" cellpadding="10px" style="color:black;">
+      <th colspan="2">Today</th>
+      <tr>
+          <th>Starts</th>
+         <th>Ends</th>
+      </tr>
+      {% for data in cur_date %}
+      <tr>
+          <td>{{data.bookingtime_start}} to</td>
+          <td>{{data.bookingtime_finish}}</td>
+      </tr>
+      {% endfor %}
+  </table>
+  {% endif %}
+  {% endfor %} 
+  
+  
+  
+  <br>
+     
+  {% for date in tomorrow %}
+  
+
+  
+  <table border="1" cellpadding="10px" cellspacing="1"  style="color:black;">
+      <th colspan="2">Tomorrow</th>
+      <tr>
+          <th>Start Time</th>
+         <th>End Time</th>
+      </tr>
+      {% for data in tom_date %}
+      <tr>
+          <td>{{data.bookingtime_start}}</td>
+          <td>{{data.bookingtime_finish}}</td>
+      </tr>
+      {% endfor %}
+  </table>
+  {% endfor %} 
+  </div>
+  
+  <tr><td>
+    <button class="show_bookings_button">Check Availability</button>
+  </td></tr>
+  
+
+
+</form>
+</table>
+</div>
+
+{% comment %} for messages {% endcomment %}
+<table  class="for-message-table">
+<tr>
+  <td>
+
+
+{% if messages %}
+  
+
+
+  {%for message in messages%}
+  {% if message.tags == 'warning' %}
+      <p style="color:red;">{{message}}</p>
+     
+  {% elif message.tags == 'info' %}
+  <script>
+    window.onload = function(){
+      alert('{{message}}')
+    }
+  </script>
+  {% endif %}
+  {% endfor %}  
+
+
+
+  {% else %}
+  {% endif %}
+</td></tr>
+</table> 
+
+<br>
+
+
+
+
+<div class="for-booking-table"> 
+ <table border="1" cellspacing="0" cellpadding="2px" class="for-booking-table-inner"> 
+  <form action="/bookings" method="POST" class="for_booking_form">
+  {% csrf_token %}
+  <tr>
+     <tr>
+     <td>
+      <h5>Choose Date:</h5>
+      <input type="date" class="for_booking_date_inner" name="for_date">
+     
+    </td>
+    </tr>
+    </tr>
+    <tr>
+      
+      <tr>
+        <td>
+          <h5>Choose Start Time:</h5>
+          <input type="time" class="for_booking_time_inner" name="for_start_time">
+        </td>
+      </tr>
+    </tr>
+     <tr>
+      
+    <tr>
+      <td>
+        <h5>Choose Finish Time:</h5>
+        <input type="time" class="for_booking_time_inner" name="for_finish_time"></td>
+    </tr> 
+    </tr> 
+    <tr>
+      <td>&nbsp;&nbsp;<br><button class="for_booking_button" name="for_button">Submit</button><br></td>
+    </tr>      
+       
+    
+      
+  
+</form>
+</table>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock body %}

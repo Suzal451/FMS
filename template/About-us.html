@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+<style>
+/* About Us Section */
+.about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: white;
+    gap: 40px;
+}
+
+/* Description Styling */
+.about-us-description {
+    max-width: 900px;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8em;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.about-us-description h2 {
+    margin-top: 0;
+    color: #222;
+}
+
+/* Why Choose Us Styling */
+.why-choose-us {
+    max-width: 900px;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8em;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.why-choose-us h2 {
+    margin-top: 0;
+    color: #222;
+}
+</style>
+
+<div class="about-us">
+
+    <!-- Who Are We Section -->
+    <div class="about-us-description">
+        <h2>Who are we?</h2>
+        <p>
+            We are a passionate team dedicated to revolutionizing the way futsal is played, managed, and experienced.
+            Based in Amarsingh Chowk, Pokhara, our goal is to create a digital bridge between futsal players, hosts,
+            and organizers through an efficient and user-friendly platform. Founded in 2025, our Futsal Management
+            System was built to simplify bookings, support event organization, and help futsal venues grow — all while
+            promoting an active, sports-driven lifestyle in our community and beyond.
+        </p>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <p>
+            At Futsal Management System (FMS), we believe in delivering more than just a booking platform — we offer a complete futsal experience.
+            Our system is designed to make booking courts quick, simple, and hassle-free.
+            With secure payment options, real-time booking updates, and a user-friendly interface, players and hosts alike can manage their games and events effortlessly.
+            We are committed to innovation, reliability, and excellence, ensuring that every user — whether a passionate player or a venue owner — receives the best service possible.
+            Choose FMS for a smarter, faster, and more connected way to experience futsal.
+        </p>
+    </div>
+
+</div>
+
+{% endblock body %}

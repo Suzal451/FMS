@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+
+
+{% block body %}
+<style>
+    .alert_logout{
+        color:white;
+        text-align:center;
+        width:500px;
+        height:100px;
+        padding-top:5px;
+        padding-bottom:30px;
+        margin-top:5.4%;
+        margin-bottom:0;
+        margin-left:36%;
+        background-color: #60856f;    
+    }
+
+    h5 a{
+    
+    text-align: center;
+    position: relative;
+    color:white;
+    font-size: 17px;
+    margin-left: 0%;
+    margin-bottom:10px;
+    text-decoration:none;
+    text-transform:none;
+    letter-spacing:3px;
+        }
+    h5 a:hover{
+        color:black;
+    }
+</style>
+<div class="alert_logout">
+
+<h1>You have been logged out!</h1>
+<h5><a href="/login">Login Again!</a></h5>
+</div>
+<br><br><br><br>
+{% endblock body %}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://unpkg.com/khalti-checkout-web@latest/dist/khalti-checkout.iffe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'parallax.css'%}" type="text/css">
+    
+    <title>cms</title>
+
+</head>
+
+<body>
+         <nav  class="navbar">
+        <a href="/home" class="logo-letter"><div class="logo">
+        </div></a>
+        {% if user.is_authenticated %}
+        
+        <a href="/profile" class="navbar-item-profile">Profile</a>
+        {% else %}
+        {% endif %}
+        
+        <a href="/events" class="navbar-item-events">events</a>
+        {% comment %} &nbsp; {% endcomment %}
+        <a href="/bookings" class="navbar-item-book">book</a>
+        
+        
+        {% if user.is_authenticated%}
+        <a href="/logout" class="navbar-item-logout">logout</a>
+        {% else %}
+        <a href="/login" class="navbar-item-logout">login </a>
+        {% endif %}
+        
+        
+       </nav>
+
+
+       {%for message in messages%}
+       {% if message.tags == 'error' %}
+           <p style="color:red;">{{message}}</p>
+          
+       {% elif message.tags == 'info' %}
+       <script>
+         window.onload = function(){
+           alert('{{message}}')
+         }
+       </script>
+       {% endif %}
+       {% endfor %}
+    
+    {% block body %}
+    {% endblock body %}
+    
+  <footer class="footer">
+    <div>
+      <div class="footer-logo"></div>
+      </div>
+
+  </footer>  
+  <footer class="second-footer">
+    <div>
+      
+<a   href="/aboutus">About Us</a>
+<a href="/contact-us">Contact Us</a>
+
+
+
+
+  </footer>
+  
+  <footer class="fourth-footer">
+    <div>
+      <a href="https://www.facebook.com"  id="image-id"></a>
+      &nbsp;&nbsp;&nbsp;
+      <a href="https://www.twitter.com" id="image-id-3"></a>
+      &nbsp;&nbsp;&nbsp;
+      <a href="https://www.instagram.com" id="image-id-4"></a>
+      
+    </div>
+
+  </footer>
+  <footer class="third-footer">
+    <div>
+      <a href="#">FutsalManagementSystem @2025 .    All Rights Reserved.</a>
+     
+      
+    </div>
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1>{{current_date}}</h1>
+
+{%for message in messages%}
+<h2>{{message}}</h2>
+{% endfor %}
+
+
+<div> 
+{% for date in today %}
+
+{% if date == "1" %}
+
+<table border="1" cellspacing="1" cellpadding="10px">
+    <th colspan="2">Today</th>
+    <tr>
+        <th>Start Time</th>
+       <th>End Time</th>
+    </tr>
+    {% for data in cur_date %}
+    <tr>
+        <td>{{data.bookingtime_start}}</td>
+        <td>{{data.bookingtime_finish}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endfor %} 
+
+
+
+<br>
+   
+{% for date in tomorrow %}
+
+
+
+<table border="1" cellpadding="10px" cellspacing="1" >
+    <th colspan="2">Tomorrow</th>
+    <tr>
+        <th>Start Time</th>
+       <th>End Time</th>
+    </tr>
+    {% for data in tom_date %}
+    <tr>
+        <td>{{data.bookingtime_start}}</td>
+        <td>{{data.bookingtime_finish}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %} 
+</div>
+{% endblock body %}
+
